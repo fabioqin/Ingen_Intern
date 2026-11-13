@@ -1,0 +1,1 @@
+PyTorch logistic regression experiment with MLflow tracking, reproducible seeds, hardware checks, and automated tests. Run `uv sync --locked`, `uv run python -m safety_lens.experiment`, and `uv run pytest -q`. view experiments with `uv run mlflow ui --backend-store-uri sqlite:///mlflow.db`.

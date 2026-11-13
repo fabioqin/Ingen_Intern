@@ -1,0 +1,36 @@
+name: Week 1 checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.13.6"
+          enable-cache: true
+      - run: uv sync --locked
+      - run: uv run ruff check .
+      - run: uv run black --check .
+      - run: uv run pytest -q
+      - name: Verify a deliberately failing test is detected
+        shell: bash
+        run: |
+          trap 'rm -f tests/test_deliberate_failure.py' EXIT
+          printf 'def test_deliberate_failure():\n    assert False\n' > tests/test_deliberate_failure.py
+          set +e
+          uv run pytest -q tests/test_deliberate_failure.py
+          result=$?
+          set -e
+          test "$result" -eq 1
+      - run: uv run python -m scripts.check_gpu
+      - run: uv run python -m safety_lens.experiment
+      - uses: actions/upload-artifact@v4
+        with:
+          name: week01-run-evidence
+          path: |
+            outputs/
+            mlflow.db
+            mlruns/

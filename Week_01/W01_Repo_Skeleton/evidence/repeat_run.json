@@ -1,0 +1,13 @@
+{
+  "run_id": "1a47675f2ba54398afc421aecb11e7f6",
+  "tracking_uri": "sqlite:///mlflow.db",
+  "metrics": {
+    "brier_score": 0.13023669885971054,
+    "log_loss": 0.4140768053570235,
+    "roc_auc": 0.90592,
+    "elapsed_seconds": 0.877065784000024,
+    "cpu_seconds": 0.8700000000000001,
+    "rss_end_mb": 535.41015625
+  },
+  "readback_verified": true
+}

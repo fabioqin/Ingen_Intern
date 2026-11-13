@@ -1,0 +1,30 @@
+{
+  "run_id": "d835a7fef6314f089b5108271e2a2afd",
+  "status": "FINISHED",
+  "params": {
+    "seed": "42",
+    "epochs": "200",
+    "learning_rate": "0.1",
+    "model": "logistic_regression",
+    "dataset": "synthetic_v1",
+    "n_samples": "1000",
+    "n_features": "10",
+    "test_fraction": "0.25",
+    "device": "cpu"
+  },
+  "metrics": {
+    "brier_score": 0.13023669885971054,
+    "log_loss": 0.4140768053570235,
+    "roc_auc": 0.90592,
+    "elapsed_seconds": 0.6821364770003129,
+    "cpu_seconds": 0.6699999999999999,
+    "rss_end_mb": 539.07421875,
+    "train_loss": 0.454670250415802
+  },
+  "artifact_names": [
+    "device.json",
+    "model.pt",
+    "predictions.csv"
+  ],
+  "same_seed_metrics_equal": true
+}

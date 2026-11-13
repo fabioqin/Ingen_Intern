@@ -1,0 +1,11 @@
+# Week 1 Log
+
+This week I worked on the AI hazard assessment and a minimal experiment framework for the internship. I approached the risk analysis using the scenario-based reasoning I have been learning in SRA 311: identify the input, the failure or attack path, the affected decision, and the resulting harm. This helped me connect broad AI safety concerns to specific product behavior.
+
+Fari was the hardest platform for me to score. Its care-related functions raise several connected questions about sensor reliability, image interpretation, data security, and legal compliance. A wrong reading could affect a care decision, while an image or interaction record could also create a privacy risk. These consequences depend on how the system is deployed and who responds to its outputs. Combining them into one likelihood and severity score requires more information than a product description provides.
+
+The information that would most change my assessment is the actual sensor-to-decision workflow: which inputs are collected, what the model infers, who can access the records, and whether a person reviews an alert before acting. I would also want evidence about missed alerts, false alarms, identity verification, retention settings, and behavior when sensors disagree. These details would help me separate individual scenarios and explain why each receives its score.
+
+For the repository skeleton, I used a textbook PyTorch logistic regression experiment with synthetic binary classification data. MLflow records parameters, training loss, evaluation metrics, hardware information, and model artifacts. Local verification included three passing tests, repeatable prediction metrics with the same seed, and replaying saved weights to reproduce predictions. GitHub Actions was configured, but the remote job was blocked before execution by an account billing restriction.
+
+My main engineering takeaway was the value of visualization. Code review and tests help establish correctness, while a clear experiment view makes it much easier to compare runs, inspect loss curves, and understand results. I want to make visualization a regular part of the workflow. Next I will focus on using the tracking interface effectively, keeping experiment records consistent, and resolving the remote CI blocker.
