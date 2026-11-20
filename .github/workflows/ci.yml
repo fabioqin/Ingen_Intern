@@ -1,4 +1,4 @@
-name: Week 1 checks
+name: Internship project checks
 on: [push, pull_request]
 permissions:
   contents: read
