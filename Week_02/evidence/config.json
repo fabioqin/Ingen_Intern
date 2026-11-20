@@ -1,0 +1,29 @@
+{
+  "development_size": 20000,
+  "test_size": 10000,
+  "validation_fraction": 0.2,
+  "split_seed": 42,
+  "seeds": [
+    7,
+    21,
+    42
+  ],
+  "learning_rates": [
+    0.001,
+    0.003
+  ],
+  "hidden": 64,
+  "batch_size": 256,
+  "patience": 5,
+  "max_epochs": 50,
+  "fpr_budget": 0.01,
+  "input_dim": 151,
+  "output_classes": 2,
+  "optimizer": "Adam",
+  "git_revision": "b5aefde5b7ba9731069eebff4153d817c8768375",
+  "source": "https://raw.githubusercontent.com/Sambhram-Gaonkar/IDNResearch/d9901df38911adfe4904ae7d6e4ab7c4dd0bf74f/data",
+  "blobs": {
+    "training": "35b624e416c02f8ab5baa649b317ad9c8f9961fe",
+    "testing": "928975eafe38c3c236df957ef7cf75dcd01831a1"
+  }
+}
