@@ -164,9 +164,7 @@ def run_experiment(
     history = []
 
     for epoch in range(1, epochs + 1):
-        train_loss = train_epoch(
-            model, train_loader, optimizer, selected_device
-        )
+        train_loss = train_epoch(model, train_loader, optimizer, selected_device)
         test_loss, accuracy = evaluate(model, test_loader, selected_device)
         history.append(
             {

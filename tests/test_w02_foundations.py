@@ -51,9 +51,7 @@ def test_softmax_and_cross_entropy():
     probabilities = stable_softmax(logits)
     loss = cross_entropy(logits, targets)
     assert torch.isfinite(probabilities).all()
-    assert torch.allclose(
-        probabilities.sum(dim=1), torch.ones(2), atol=1e-6
-    )
+    assert torch.allclose(probabilities.sum(dim=1), torch.ones(2), atol=1e-6)
     assert torch.allclose(loss, functional.cross_entropy(logits, targets))
 
 
