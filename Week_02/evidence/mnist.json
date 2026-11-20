@@ -1,0 +1,11 @@
+{
+  "seed": 42,
+  "device": "cpu",
+  "train_examples": 10000,
+  "test_examples": 10000,
+  "batch_size": 128,
+  "epoch": 1,
+  "train_loss": 0.9345580257415772,
+  "test_loss": 0.42934481711387634,
+  "accuracy": 0.8842
+}

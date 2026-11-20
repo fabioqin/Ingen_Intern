@@ -93,3 +93,25 @@ def test_mnist_training_and_evaluation():
     assert torch.isfinite(torch.tensor(train_loss))
     assert torch.isfinite(torch.tensor(test_loss))
     assert 0.0 <= accuracy <= 1.0
+
+
+def test_two_layer_backprop_matches_chain_rule():
+    torch.manual_seed(42)
+    model = TwoLayerMLP(3, 4, 2).double()
+    inputs = torch.randn(5, 3, dtype=torch.double, requires_grad=True)
+    upstream = torch.randn(5, 2, dtype=torch.double)
+    model(inputs).backward(upstream)
+    with torch.no_grad():
+        preactivation = model.hidden(inputs)
+        hidden = preactivation.relu()
+        grad_hidden, grad_w2, grad_b2 = manual_linear_backward(
+            hidden, model.output.weight, upstream
+        )
+        grad_x, grad_w1, grad_b1 = manual_linear_backward(
+            inputs, model.hidden.weight, grad_hidden * (preactivation > 0)
+        )
+    for actual, expected in zip(
+        [inputs.grad, *(parameter.grad for parameter in model.parameters())],
+        [grad_x, grad_w1, grad_b1, grad_w2, grad_b2],
+    ):
+        torch.testing.assert_close(actual, expected)
